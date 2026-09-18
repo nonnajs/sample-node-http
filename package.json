@@ -1,0 +1,38 @@
+{
+    "name": "@nonnajs/sample-node-http",
+    "version": "1.0.0",
+    "description": "Pure Node.js HTTP server sample using @nonnajs/di and native node:http",
+    "author": "Manuel Santos <ney.br.santos@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "keywords": [
+        "nonna",
+        "di",
+        "injector",
+        "nodejs",
+        "http",
+        "sample"
+    ],
+    "main": "dist/index.js",
+    "types": "src/index.ts",
+    "scripts": {
+        "compile-deps": "nonna-compile",
+        "prebuild": "pnpm compile-deps",
+        "build": "tsc -p tsconfig.build.json",
+        "clean:build": "rimraf ./dist",
+        "lint": "eslint . --ext .js,.ts",
+        "lint:fix": "pnpm lint --fix",
+        "format": "prettier --check .",
+        "format:fix": "prettier --write .",
+        "pretest": "pnpm compile-deps",
+        "test": "node --test --test-reporter node-test-reporter --require ts-node/register test/**/*.{test,it.test}.ts",
+        "tsc": "tsc",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@nonnajs/di": "workspace:*"
+    },
+    "devDependencies": {
+        "@nonnajs/compiler": "workspace:*"
+    }
+}
